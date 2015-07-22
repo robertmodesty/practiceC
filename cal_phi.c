@@ -59,7 +59,7 @@ void main () {
 	else if (N < 1) N = 1;
 
 
-	printf ("fai =%2x.", (int) X [0]);
+	printf ("phi =%2x.", (int) X [0]);
 	for (Cnt = 1; Cnt <= N; Cnt++) {
 	  printf ("%1X", ((int) X [Cnt]) / 0x10);
 	  printf ("%1X", ((int) X [Cnt]) % 0x10);
@@ -97,7 +97,7 @@ void main () {
 	}
 	for (Cnt = 1; Cnt <= N1; Cnt++) Out [Cnt] += 48;
 
-	printf ("fai = %c.", Out [0]);
+	printf ("phi = %c.", Out [0]);
 	for (Cnt = 1; Cnt <= N1; Cnt++) {
 	  printf ("%c", Out [Cnt]);
 	  if ((Cnt % 10) == 0) printf (" ");
