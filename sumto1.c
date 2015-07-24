@@ -7,8 +7,8 @@ char jump (char *seqnc);
 
 int main (void) {
     char seqnc [10] = {9, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    char typ_out [24] = "0/00 + 0/00 + 0/00 = 1\n";
-    int cnt, plc;
+    char typ_out [23] = "0/00 + 0/00 + 0/00 = 1";
+    int cnt, plc, rund = 0, rmn = 0;
 
     printf ("       *******************************************\n");
     printf ("       *    ?      ?      ?                      *\n");
@@ -18,21 +18,29 @@ int main (void) {
     printf ("       *       every question mark. They         *\n");
     printf ("       *         are 1 to 9, and all different!  *\n");
     printf ("       *******************************************\n");
-    
+
     do {
       if (chk_eqn (seqnc)) {
-        for (cnt = 3; cnt > 0; cnt--) {
-            plc = (cnt - 1) * 7;
+	for (cnt = 3; cnt > 0; cnt--) {
+	    plc = (cnt - 1) * 7;
 	    typ_out [plc] = seqnc [cnt + 6] + '0';
 	    typ_out [plc + 3] = seqnc [cnt * 2] + '0';
 	    typ_out [plc + 2] = seqnc [cnt * 2 - 1] + '0';
 	}
-	printf ("\n");
-	printf (typ_out);
+	printf ("\r%s  \n", typ_out);
+      }
+
+      rmn++;
+      rmn %= 100;
+      if (rmn == 0) {
+	rund++;
+	printf ("\r%d00 combination tested.", rund);
       }
 
       next_sequence (seqnc);
     } while (jump (seqnc) == 0);
+
+    printf ("\r%d%d combination tested.\n", rund, rmn);
 
     return 0;
 }
